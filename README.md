@@ -1,0 +1,1 @@
+Project repo for our SWIB16 workshop exercises, see https://github.com/hbz/swib16-workshop
