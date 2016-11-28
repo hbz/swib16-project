@@ -27,7 +27,7 @@
                         // if we have a geo location field...
                         if(location.geo) {
                             // we create a marker on our map, with a popup to show the name:
-                            L.marker([location.geo.lat, location.geo.lon]).bindPopup(hit.type).addTo(map);
+                            L.marker([location.geo.lat, location.geo.lon]).bindPopup(hit.name).addTo(map);
                         }
                     });
                 }
