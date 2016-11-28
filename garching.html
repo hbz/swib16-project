@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   </head>
   <body style="color: white; background: #004678">
-    <h1>Libraries in Bonn</h1>
+    <h1>Libraries in Garching</h1>
     <div id="map" style="height: 550px; color: black;"></div>
     <script>
     // we create a map:
@@ -16,7 +16,7 @@
     var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png').addTo(map);
     // we call the lobid API:
     $.ajax({
-        url: 'https://beta.lobid.org/organisations/search?format=json&size=20&q=type:Library+AND+location.address.addressLocality:Bonn',
+        url: 'https://beta.lobid.org/organisations/search?format=json&size=20&q=type:Library+AND+location.address.addressLocality:Garching',
         success: function(result){
             // iterate over all hits...
             $.each(result, function(index, hit) {
