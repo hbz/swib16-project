@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="us-ascii">
+    <title>Libraries in Cologne</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  </head>
+  <body style="color: white; background: #004678">
+    <h1>Libraries in Bonn</h1>
+    <div id="map" style="height: 550px; color: black;"></div>
+    <script>
+    // we create a map:
+    var map = L.map('map').setView([48.25, 11.65], 8);
+    var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png').addTo(map);
+    // we call the lobid API:
+    $.ajax({
+        url: 'https://beta.lobid.org/organisations/search?format=json&size=20&q=type:Library+AND+location.address.addressLocality:Bonn',
+        success: function(result){
+            // iterate over all hits...
+            $.each(result, function(index, hit) {
+                // if we have a location field...
+                if(hit.location) {
+                    // iterate over all locations of each hit...
+                    $.each(hit.location, function(index, location) {
+                        // if we have a geo location field...
+                        if(location.geo) {
+                            // we create a marker on our map, with a popup to show the name:
+                            L.marker([location.geo.lat, location.geo.lon]).bindPopup(hit.type).addTo(map);
+                        }
+                    });
+                }
+            });
+        }});
+    </script>
+  </body>
+</html>
