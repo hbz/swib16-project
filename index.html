@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Libraries in Cologne</title>
+    <title>Libraries in Bonn</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -19,7 +19,7 @@
     var layer = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png').addTo(map);
     // we call the lobid API:
     $.ajax({
-        url: 'https://beta.lobid.org/organisations/search?format=json&size=20&q=type:Library+AND+location.address.addressLocality:Bonn',
+        url: 'https://beta.lobid.org/organisations/search?format=json&size=2000&q=type:Library+AND+location.address.addressLocality:Bonn',
         success: function(result){
             // iterate over all hits...
             $.each(result, function(index, hit) {
